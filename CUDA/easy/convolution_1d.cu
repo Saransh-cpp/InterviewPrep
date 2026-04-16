@@ -3,11 +3,13 @@
 __global__ void convolution_1d_kernel(const float* input, const float* kernel, float* output,
                                       int input_size, int kernel_size) {
     int i = threadIdx.x + blockDim.x * blockIdx.x;
+
     if (i < input_size - kernel_size + 1) {
-        output[i] = 0;
+        float sum = 0;
         for (int j = 0; j < kernel_size; j++) {
-            output[i] += input[i + j] * kernel[j];
+            sum += input[i + j] * kernel[j];
         }
+        output[i] = sum;
     }
 }
 
