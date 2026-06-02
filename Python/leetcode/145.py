@@ -18,3 +18,22 @@ def postorderTraversal(root):
     recurse(root)
 
     return out
+
+
+from collections import deque
+
+
+def postorderTraversal(root):
+    if root == [] or root is None: return []
+    stack1 = deque([root])
+    stack2 = deque()
+
+    while len(stack1) != 0:
+        el = stack1.pop()
+        stack2.append(el.val)
+        if el.left:
+            stack1.append(el.left)
+        if el.right:
+            stack1.append(el.right)
+
+    return list(stack2)[::-1]

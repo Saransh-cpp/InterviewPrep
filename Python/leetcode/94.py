@@ -18,3 +18,25 @@ def inorderTraversal(root):
     recurse(root)
 
     return out
+
+
+from collections import deque
+
+
+def inorderTraversal(root):
+    stack = deque()
+    node = root
+    out = []
+
+    while True:
+        if node is not None:
+            stack.append(node)
+            node = node.left
+        else:
+            if len(stack) == 0:
+                break
+            node = stack.pop()
+            out.append(node.val)
+            node = node.right
+
+    return out

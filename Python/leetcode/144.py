@@ -18,3 +18,22 @@ def preorderTraversal(root):
     recurse(root)
 
     return out
+
+
+from collections import deque
+
+
+def preorderTraversal(root):
+    if root == [] or root is None: return []
+    stack = deque([root])
+    out = []
+
+    while len(stack) != 0:
+        el = stack.pop()
+        out.append(el.val)
+        if el.right:
+            stack.append(el.right)
+        if el.left:
+            stack.append(el.left)
+
+    return out
