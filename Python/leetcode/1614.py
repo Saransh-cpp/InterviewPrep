@@ -1,0 +1,10 @@
+def maxDepth(s):
+    curr_depth = 0
+    max_depth = 0
+    for c in s:
+        if c == "(":
+            curr_depth += 1
+            max_depth = max(max_depth, curr_depth)
+        elif c == ")":
+            curr_depth -=1
+    return max_depth
