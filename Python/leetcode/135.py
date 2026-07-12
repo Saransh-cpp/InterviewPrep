@@ -13,3 +13,26 @@ def candy(ratings):
         summ += candies[i]
 
     return summ
+
+def candy(ratings):
+    i = 1
+    summ = 1
+    n = len(ratings)
+    while i < n:
+        if i < n and ratings[i] == ratings[i - 1]:
+            summ += 1
+            i += 1
+            continue
+        peak = 1
+        while i < n and ratings[i] > ratings[i - 1]:
+            peak += 1
+            summ += peak
+            i += 1
+        trough = 1
+        while i < n and ratings[i] < ratings[i - 1]:
+            summ += trough
+            i += 1
+            trough += 1
+        if trough > peak:
+            summ += (trough - peak)
+    return summ
